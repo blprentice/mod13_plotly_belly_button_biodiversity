@@ -81,14 +81,10 @@ function buildCharts(sample) {
     var yticks = 
 
     // Deliverable 1: 8. Create the trace for the bar chart. 
-    var barData = [
-
-    ];
+    var barData = [];
 
     // Deliverable 1: 9. Create the layout for the bar chart. 
-    var barLayout = {
-
-    };
+    var barLayout = {};
 
     // Deliverable 1: 10. Use Plotly to plot the data with the layout. 
 
