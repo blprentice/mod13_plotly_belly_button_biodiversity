@@ -58,22 +58,22 @@ function buildCharts(sample) {
     var samples = data.samples;
 
     // Deliverable 1: 3. Create a variable that holds the samples array.
-    // var samples = d3.json("samples.json").then((data) => {console.log(data['samples'])});
+    var samples = d3.json("samples.json").then((data) => {console.log(data['samples'])});
 
     // Deliverable 1: 4. Create a variable that filters the samples for the object with the desired sample number.
-    var samplesFiltered = samples.filter(sampleObj => sampleObj.id == sample);
+    // var samplesFiltered = samples.filter(sampleObj => sampleObj.id == sample);
 
     // Deliverable 3: 1. Create a variable that filters the metadata array for the object with the desired sample number.
 
     // Deliverable 1: 5. Create a variable that holds the first sample in the array.
-    var firstSample = samplesFiltered[0];
+    // var firstSample = samplesFiltered[0];
 
     // Deliverable 3: 2. Create a variable that holds the first sample in the metadata array.
 
     // Deliverable 1: 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otu_ids = d3.json("samples.json").then((data) => {console.log(data["samples"][0]["otu_ids"])});
-    var otu_labels = d3.json("samples.json").then((data) => {console.log(data["samples"][0]["otu_labels"])});
-    var sample_values = d3.json("samples.json").then((data) => {console.log(data["samples"][0]["sample_values"])});
+    // var otu_ids = d3.json("samples.json").then((data) => {console.log(data["samples"][0]["otu_ids"])});
+    // var otu_labels = d3.json("samples.json").then((data) => {console.log(data["samples"][0]["otu_labels"])});
+    // var sample_values = d3.json("samples.json").then((data) => {console.log(data["samples"][0]["sample_values"])});
 
     // Deliverable 3: 3. Create a variable that holds the washing frequency.
 
@@ -81,24 +81,24 @@ function buildCharts(sample) {
     // Deliverable 1: 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order 
     // so the otu_ids with the most bacteria are last. 
-    var yticks = otu_ids.slice(0, 10).reverse().map(otuid => "OTU ${otuid}")
+    // var yticks = otu_ids.slice(0, 10).reverse().map(otuid => "OTU ${otuid}")
 
     // Deliverable 1: 8. Create the trace for the bar chart. 
-    var barData = {
-      x: sample_values,
-      y: yticks,
-      text: otu_labels.reverse(),
-      type: "bar",
-      orientation: "h"
-    };
+    // var barData = {
+    //   x: sample_values,
+    //   y: yticks,
+    //   text: otu_labels.reverse(),
+    //   type: "bar",
+    //   orientation: "h"
+    // };
 
     // Deliverable 1: 9. Create the layout for the bar chart. 
-    var barLayout = {
-      title: "Top 10 Bacteria Cultures Found",
-    };
+    // var barLayout = {
+    //   title: "Top 10 Bacteria Cultures Found",
+    // };
 
     // Deliverable 1: 10. Use Plotly to plot the data with the layout.
-    // Plotly.newPlot("plotArea", [barData], barLayout);
+    //  Plotly.newPlot("plotArea", [barData], barLayout);
 
     // Deliverable 2: 1. Create the trace for the bubble chart.
     // var bubbleData = {
@@ -114,9 +114,9 @@ function buildCharts(sample) {
 
     // Deliverable 2: 2. Create the layout for the bubble chart.
     // var bubbleLayout = {
-    //   title: "This fucking sucks",
+    //   title: ???,
     //   xaxis: {
-    //     text: 'Moogus'
+    //     text: 
     //   },
     //   height: 600,
     //   width: 600
@@ -130,7 +130,7 @@ function buildCharts(sample) {
     //   {
     //     domain: {x: [], y: []},
     //     value: 0,
-    //     title: { text: "Moogus"},
+    //     title: { text: ""},
     //     type: "indicator",
     //     mode: "gauge+nuber"
     //   }
