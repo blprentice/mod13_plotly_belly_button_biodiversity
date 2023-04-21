@@ -18,10 +18,16 @@ const optionChanged = () => {
         Object.entries(meta).forEach(([key,val])=> {
             d3.select('.panel-body').append('h4').text(`${key.toUpperCase()}: ${val}`);
         });
-
+// -----------------------------------------------------------------------------
+// 
+// -----------------------------------------------------------------------------
         let { otu_ids, sample_values, otu_labels } = sample;
-
-        var data = [
+        let { wfreq } = meta;
+// -----------------------------------------------------------------------------
+// 
+// -----------------------------------------------------------------------------
+        // Bar Chart
+        var barData = [
             {
               x: sample_values.slice(0,10).reverse(),
               y: otu_ids.slice(0,10).reverse().map(x => `OTU ${x}`),
@@ -31,13 +37,16 @@ const optionChanged = () => {
             }
           ];
           
-          Plotly.newPlot('bar', data);
-
-          var trace1 = {
+          Plotly.newPlot('bar', barData);
+// -----------------------------------------------------------------------------
+// 
+// -----------------------------------------------------------------------------
+          // Bubble Chart
+          var bubble = {
             x: otu_ids,
             y: sample_values,
-            mode: 'markers',
             text: otu_labels,
+            mode: 'markers',
             marker: {
               size: sample_values,
               color: otu_ids,
@@ -45,14 +54,40 @@ const optionChanged = () => {
             }
           };
           
-          var data = [trace1];
+          var data = [bubble];
           
           var layout = {
-            title: 'Marker Size',
+            title: 'Bacteria Cultures per Sample',
+            xaxis: {title: "OTU ID"},
             showlegend: false,
           };
           
           Plotly.newPlot('bubble', data, layout);
+// -----------------------------------------------------------------------------
+// 
+// -----------------------------------------------------------------------------
+          //Gauge Chart
+          var gauge = [
+            {
+              domain: { x: [0, 1], y: [0, 1] },
+              value: wfreq,
+              title: { text: "Belly Button Washing Frequency" },
+              type: "indicator",
+              mode: "gauge+number",
+              gauge: {'axis': {'range': [null, 10], 'dtick': 2},
+                      'bar': {'color': "black"},
+                      'steps' : [
+                        {'range': [0, 2], 'color': "red"},
+                        {'range': [2, 4], 'color': "orange"},
+                        {'range': [4, 6], 'color': "yellow"},
+                        {'range': [6, 8], 'color': "lightgreen"},
+                        {'range': [8, 10], 'color': "green"}
+                      ]}
+            }
+          ];
+          
+          // var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+          Plotly.newPlot('gauge', gauge);
 
         console.log(sample)
     })
